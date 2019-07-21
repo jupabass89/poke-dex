@@ -1,0 +1,110 @@
+@import "./variables.scss";
+
+.main {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  align-items: center;
+
+  .title {
+    height: 20%;
+    margin: 20px 0 50px 0px;
+  }
+
+  .poke-dex {
+    display: grid;
+    grid-template-columns: 350px 60px 1fr;
+    grid-template-rows: 150px 180px 1fr;
+    background-image: $pokedex;
+    background-repeat: no-repeat;
+    width: 750px;
+    height: 540px;
+
+    .id {
+      grid-column: 1;
+      grid-row: 3;
+      font-size: 30px;
+      font-weight: bold;
+      opacity: 0.7;
+      width: 118px;
+      height: 55px;
+      display: flex;
+      justify-self: center;
+      align-self: flex-end;
+      margin-bottom: 36px;
+      margin-left: -52px;
+      justify-content: center;
+      text-align: center;
+      font-family: $info-font-family;
+      background-color: yellow;
+      border: 2px solid black;
+      border-radius: 10px;
+    }
+
+    .info {
+      grid-column: 3;
+      grid-row: 2;
+      color: $info-text-color;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      font-weight: bold;
+      font-family: $info-font-family;
+      width: 70%;
+      height: 55%;
+      padding: 10px;
+      margin: 10px 0 0 32px;
+      background-color: rgb(7, 212, 7);
+      border-radius: 10px;
+      border: 2px solid black;
+
+      .name {
+        font-size: 25px;
+        font-weight: bold;
+        color: $info-text-color;
+        margin: 0 0 10px 0;
+        opacity: 0.7;
+      }
+
+      .text {
+        font-size: 15px;
+        font-weight: bold;
+        color: $info-text-color;
+        align-self: flex-start;
+        margin: 0;
+        opacity: 0.7;
+      }
+    }
+
+    .buttons {
+      grid-column: 3;
+      grid-row: 3;
+      padding: 60px 210px 110px 60px;
+      display: flex;
+      flex-direction: row;
+
+      .button {
+        width: 100%;
+        cursor: pointer;
+      }
+    }
+
+    .reset {
+      width: 70px;
+      height: 30px;
+      grid-column: 1;
+      grid-row: 3;
+      justify-self: center;
+      margin: 60px 0 0 40px;
+      cursor: pointer;
+    }
+
+    .img {
+      grid-column: 1;
+      grid-row: 2;
+      justify-self: center;
+      align-self: center;
+      width: 50%;
+    }
+  }
+}
