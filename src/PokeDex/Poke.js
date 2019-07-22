@@ -6,7 +6,7 @@ import './Poke.scss';
 const Poke = () => {
 
   const initialPokeState = {
-    pokeLogo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1280px-International_Pok%C3%A9mon_logo.svg.png',
+    pokeLogo: '',
     pokeId: 25,
     pokeName: '',
     pokeheight: '',
@@ -62,7 +62,7 @@ const Poke = () => {
 
     return (
       <div className="main">
-        <img className="title" src={poke.pokeLogo} alt="poke-logo" />
+        <img className="title" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1280px-International_Pok%C3%A9mon_logo.svg.png" alt="poke-logo" />
         <div className="poke-dex">
           <img className="img" src={poke.pokeImg} alt="poke-img" />
           <div onClick={resetPoke} className="reset"></div>
