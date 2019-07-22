@@ -63,7 +63,7 @@ const Poke = () => {
       <div className="main">
         <img className="title" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1280px-International_Pok%C3%A9mon_logo.svg.png" alt="poke-logo" />
         <div className="poke-dex">
-          <img className="img" src={poke.pokeImg}  />
+          <img className="img" src={poke.pokeImg} alt="" />
           <div onClick={resetPoke} className="reset"></div>
           <input type="text" value={poke.pokeId} onChange={handleEdit} className="id" />
           <div className="info">
