@@ -24,11 +24,11 @@ const Poke = () => {
 
       const fetchedState = {
         pokeId: res.data.id,
-        pokeName: res.data.name,
+        pokeName: res.data.name.charAt(0).toUpperCase() + res.data.name.slice(1),
         pokeheight: res.data.height,
         pokeweight: res.data.weight,
         pokeImg: res.data.sprites.front_default,
-        pokeType: res.data.types[0].type.name
+        pokeType: res.data.types[0].type.name.charAt(0).toUpperCase() + res.data.types[0].type.name.slice(1)
       }
 
       setPoke(fetchedState)
