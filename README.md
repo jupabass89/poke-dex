@@ -23,7 +23,7 @@ Abrimos otra terminal en esa misma carpeta e instalamos axios para hacer peticio
 ```Shell
 npm install axios node-sass
 ``` 
-En un editor de texto ubicamos la carpeta `/src` y borramos todo excepto `app.js` e `index.js`
+En un editor de texto ubicamos la carpeta `/src` y dejamos `app.js` e `index.js` y el resto lo borramos. 
 
 Luego en `index.js` borramos estas dos importaciones:
 
