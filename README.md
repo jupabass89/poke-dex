@@ -15,7 +15,7 @@ cd react-dojo
 npm start
 ``` 
 
-Si todo funcinó bien esto nos dirá donde se desplego el proyecto, que por lo general es en: [http://localhost:3000/](localhost:3000).
+Si todo funcinó bien esto nos dirá donde se desplego el proyecto, que por lo general es en: [http://localhost:3000/](http://localhost:3000).
 
 ## Configuración inicial.
 Abrimos otra terminal en esa misma carpeta e instalamos axios para hacer peticiones get a la API y Sass para los estilos.
@@ -23,33 +23,33 @@ Abrimos otra terminal en esa misma carpeta e instalamos axios para hacer peticio
 ```Shell
 npm install axios node-sass
 ``` 
-En un editor de texto ubicamos la carpeta ´´´/src´´´ y borramos todo excepto ´´´app.js´´´ e ´´´index.js´´´ 
+En un editor de texto ubicamos la carpeta `/src` y borramos todo excepto `app.js` e `index.js`
 
-Luego en ´´´index.js´´´ borramos estas dos importaciones:
+Luego en `index.js` borramos estas dos importaciones:
 
-´´´JSX
+```JSX
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-´´´
+```
 Y estas líneas correspondientes al serviceWorker:
 
-´´´JSX
+```JSX
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
-´´´ 
-Ahora en ´´´App.js´´´ borramos las siguientes importaciones:
+``` 
+Ahora en `App.js` borramos las siguientes importaciones:
 
-´´´JSX
- import logo from './logo.svg';
+```JSX
+import logo from './logo.svg';
 import './App.css';
-´´´ 
+``` 
 Y todo dentro del return de la función App:
 
-´´´JSX
+```JSX
 <div className="App">
-      <header className="App-header">
+    <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
@@ -61,12 +61,12 @@ Y todo dentro del return de la función App:
           rel="noopener noreferrer"
         >
           Learn React        </a>
-      </header>
-    </div>
-´´´
+    </header>
+</div>
+```
 Dejamos algo dentro del return para comprobar que todavía funciona:
 
-´´´JSX
+```JSX
 import React from 'react';
 
 function App() {
@@ -76,10 +76,10 @@ function App() {
 }
 
 export default App;
-´´´ 
-Luego en ´´´/src´´´ creamos la carpeta ´´´Pokedex´´´ y allí creamos el archivo ´´´Poke.scss´´´ y copiamos y pegamos lo siguiente:
+``` 
+Luego en `/src` creamos la carpeta `Pokedex` y allí creamos el archivo `Poke.scss` y copiamos y pegamos lo siguiente:
 
-´´´SCSS
+```SCSS
 @import "./variables.scss";
 
 .main {
@@ -190,19 +190,19 @@ Luego en ´´´/src´´´ creamos la carpeta ´´´Pokedex´´´ y allí creamos
     }
   }
 }
-´´´ 
-Y luego también en ´´´/src/Pokedex´´´ creamos el archivo ´´´variables.scss´´´  y pegamos lo siguiente en el:
-´´´SCSS
+``` 
+Y luego también en `/src/Pokedex` creamos el archivo `variables.scss`  y pegamos lo siguiente en el:
+```SCSS
 $pokedex: url("https://vignette.wikia.nocookie.net/pokemon-wiki-no-2/images/d/d0/Pokedex1.gif/revision/latest?cb=20130630141050");
 $info-text-color: rgb(2, 2, 2);
 $info-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-´´´ 
+``` 
 
 ## Creando el componente.
 
-Ahora creamos el componente que se encargará de todo en la aplicación. Para esto en la carpeta ´´´/src/Pokedex´´´ creamos el archivo ´´´Poke.js´´´ , agregamos la importación de la biblioteca de React y la hoja de estilos y creamos la función:
+Ahora creamos el componente que se encargará de todo en la aplicación. Para esto en la carpeta `/src/Pokedex` creamos el archivo `Poke.js` , agregamos la importación de la biblioteca de React y la hoja de estilos y creamos la función:
 
-´´´JSX
+```JSX
 import React from ‘react’;
 import import './Poke.scss';
 
@@ -213,11 +213,11 @@ const Poke = () => {
 }
 
 export default Poke;
-´´´
+```
 
-Para asegurarnos que funciona vamos a la clase ´´´App.js´´´ e importamos nuestro componente recién creado y lo agregamos dentro App:
+Para asegurarnos que funciona vamos a la clase `App.js` e importamos nuestro componente recién creado y lo agregamos dentro App:
 
-´´´JSX
+```JSX
 import React from 'react';
 import Poke from './Pokedex/Poke';
 
@@ -228,41 +228,41 @@ function App() {
 }
 
 export default App;
-´´´
+```
 
 ## Probando props
 
 Las propiedades son una parte importante de los componentes de React, ya que nos permiten modificar los componentes cambiando un atributo de entrada.
 
-Para esto modificaremos el componente ´´´Poke.js´´´ para que reciba props y nos muestre un id que recibimos como atributo de entrada:
+Para esto modificaremos el componente `Poke.js` para que reciba props y nos muestre un id que recibimos como atributo de entrada:
 
-´´´JSX 
- const Poke = (props) => {
+```JSX 
+const Poke = (props) => {
     return(
     <div>Estoy en el componente {props.id}</div>
     ) 
 }
-´´´
+```
 
-Ahora modificamos ´´´App.js´´´ que es donde ingresamos este atributo:
+Ahora modificamos `App.js` que es donde ingresamos este atributo:
 
-´´´JSX
+```JSX
 function App() {
   return (
     <div><Poke id="25" /></div>
   );
 }
-´´´
+```
 
 ### Definiendo las vistas.
 
 Ahora definimos las vistas HTML que es lo que veremos finalmente cuando se ejecute la aplicación.
 
-En el componente ´´´Poke.js´´´ modificamos el return de esta manera:
+En el componente `Poke.js` modificamos el return de esta manera:
 
-´´´JSX
+```JSX
 return(
-        <div className="main">
+    <div className="main">
         <img className="title" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1280px-International_Pok%C3%A9mon_logo.svg.png" alt="poke-logo" />
         <div className="poke-dex">
           <img className="img"  alt="" />
@@ -279,23 +279,23 @@ return(
             <div className="button"></div>            
           </div>
         </div>
-      </div>
+    </div>
     )
-´´´ 
+``` 
 
 ## Agregando el 📌StateHook.
 
 El hook de estado nos permite definir y modificar el estado de un componente funcional de manera fácil.
 
-Primero importamos el hook de estado al inicio de ´´´Poke.js´´´ en la misma linea donde importamos React:
+Primero importamos el hook de estado al inicio de `Poke.js` en la misma linea donde importamos React:
 
-´´´JSX
+```JSX
 import React, { useState } from 'react';
-´´´
+```
 
-Luego definimos el estado inicial de Poke para saber qué atributos tendrá e inicializarlos. En el componente ´´´Poke.js´´´ este objeto al principio y luego inicializamos el usamos el hook para inicializar el estado con este objeto :
+Luego definimos el estado inicial de Poke para saber qué atributos tendrá e inicializarlos. En el componente `Poke.js` este objeto al principio y luego inicializamos el usamos el hook para inicializar el estado con este objeto :
 
-´´´JSX
+```JSX
 const initialPokeState = {
     pokeId: props.id,
     pokeName: '',
@@ -306,22 +306,22 @@ const initialPokeState = {
   }
 
 const [poke, setPoke] = useState(initialPokeState);
-´´´ 
+``` 
 
 ## Agregando el ⚡ UseEffect Hook.
 
 El hook de efecto permite realizar efectos secundarios en los componentes funcionales. Como cambiar su estado si hay alguna actualización o cosas por el estilo.
 
-Primero vamos a importar el useEffect hook y axios para recibir los datos de la API arriba de ´´´Poke.js´´´:
+Primero vamos a importar el useEffect hook y axios para recibir los datos de la API arriba de `Poke.js`:
 
-´´´JSX
+```JSX
 import React, { useState, useEffect }from 'react'
 import axios from 'axios';
-´´´
+```
 
 Ahora creamos el hook que se encargará de actualizar los datos desde la API, según el ID que se le proporcione:
 
-´´´JSX
+```JSX
 
 useEffect(() => {
 
@@ -339,17 +339,17 @@ useEffect(() => {
       setPoke(fetchedState)
     })
 }, [poke.pokeId]);
-´´´
+```
 
-El dato ´´´, [poke.pokeId]);´´´ del final se agrega para que el hook no tenga una fuga de memoria. Sin esto el hook se actualizará infinitamente pero con eso, sólo lo hará cuando el dato ```poke.pokeId´´´ cambie.
+El dato `, [poke.pokeId]);` del final se agrega para que el hook no tenga una fuga de memoria. Sin esto el hook se actualizará infinitamente pero con eso, sólo lo hará cuando el dato `poke.pokeId` cambie.
 
 ## Modificando la vista para ver el Pokémon que se pasó por props.
 
-Ahora que recibimos los datos desde el hook de efecto, podemos observarlos. Para esto modificamos la vista en ´´´Poke.js´´´ la siguiente manera:
+Ahora que recibimos los datos desde el hook de efecto, podemos observarlos. Para esto modificamos la vista en `Poke.js` la siguiente manera:
 
-´´´JSX
+```JSX
 return(
-        <div className="main">
+    <div className="main">
         <img className="title" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1280px-International_Pok%C3%A9mon_logo.svg.png" alt="poke-logo" />
         <div className="poke-dex">
           <img className="img" src={poke.pokeImg} alt="" />
@@ -366,19 +366,19 @@ return(
             <div className="button"></div>            
           </div>
         </div>
-      </div>
+    </div>
     )
-´´´
+```
 
-Si cambiamos el id entrada de props desde ´´´App.js```, podemos ver un Pokémon distinto:
+Si cambiamos el id entrada de props desde `App.js`, podemos ver un Pokémon distinto:
 
-´´´JSX
+```JSX
 function App() {
   return (
     <div><Poke id="150" /></div>
   );
 }
-´´´
+```
 
 En este caso veríamos a Mewtwo en vez de Pikachu.
 
@@ -386,9 +386,9 @@ En este caso veríamos a Mewtwo en vez de Pikachu.
 
 Ahora agregaremos funciones para cambiar los Pokémon sin pasarlos por atributos de entrada.
 
-Primero agregaremos las funciones ´´´nextPoke´´´´ y ´´´lastPoke´´´ para movernos de a uno al siguiente y anterior Pokémon en la Pokédex. Para ello agregamos estas funciones en ´´´Poke.js´´´:
+Primero agregaremos las funciones `nextPoke` y `lastPoke` para movernos de a uno al siguiente y anterior Pokémon en la Pokédex. Para ello agregamos estas funciones en `Poke.js`:
 
-´´´JSX
+```JSX
 const nextPoke = () => {
     if (poke.pokeId < 802){
       setPoke({ pokeId: poke.pokeId + 1});
@@ -399,32 +399,32 @@ const nextPoke = () => {
     if (poke.pokeId > 1)
       setPoke({ pokeId: poke.pokeId - 1 });
   }
-´´´
-Luego de estas, también en ´´´Poke.js´´´ agregamos la función ´´´resetPoke´´´ para regresar al primer Pokémon en la Pokédex:
+```
+Luego de estas, también en `Poke.js` agregamos la función `resetPoke` para regresar al primer Pokémon en la Pokédex:
 
-´´´JSX
+```JSX
 const resetPoke = () => {
     setPoke({ pokeId: 1 });
   }
-´´´
+```
 
-Ahora también en ```Poke.js``` agregaremos la función ´´´handleEdit´´´ para que si se modifica el campo con el ID, se muestre el Pokémon referente a este:
+Ahora también en `Poke.js` agregaremos la función `handleEdit` para que si se modifica el campo con el ID, se muestre el Pokémon referente a este:
 
-´´´JSX
+```JSX
 const handleEdit = (event) => {
     const eventValue = event.target.value;
     if (eventValue > 0 && eventValue < 803 && eventValue !== null)
       setPoke({ pokeId: event.target.value })
   }
-´´´ 
+``` 
 
 ## Modificando por última vez la vistas.
 
-Ahora modificaremos por última vez las vistas en ´´´Poke.js´´´ para agregar las funcionalidades a los botones, de este modo:
+Ahora modificaremos por última vez las vistas en `Poke.js` para agregar las funcionalidades a los botones, de este modo:
 
-´´´JSX
+```JSX
 return(
-        <div className="main">
+    <div className="main">
         <img className="title" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1280px-International_Pok%C3%A9mon_logo.svg.png" alt="poke-logo" />
         <div className="poke-dex">
           <img className="img" src={poke.pokeImg} alt="" />
@@ -441,8 +441,8 @@ return(
             <div onClick={nextPoke} className="button"></div>            
           </div>
         </div>
-      </div>
+    </div>
     )
-´´´
+```
 
 # Fin
