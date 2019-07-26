@@ -23,7 +23,7 @@ Abrimos otra terminal en esa misma carpeta e instalamos axios para hacer peticio
 ```Shell
 npm install axios node-sass
 ``` 
-En un editor de texto ubicamos la carpeta `/src` y borramos todo excepto `app.js` e `index.js`
+En un editor de texto ubicamos la carpeta `/src` y borramos todo **excepto `app.js` e `index.js`**
 
 Luego en `index.js` borramos estas dos importaciones:
 
@@ -204,7 +204,7 @@ Ahora creamos el componente que se encargará de todo en la aplicación. Para es
 
 ```JSX
 import React from ‘react’;
-import import './Poke.scss';
+import './Poke.scss';
 
 const Poke = () => {
     return(
