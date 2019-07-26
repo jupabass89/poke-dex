@@ -4,7 +4,7 @@ import Poke from './PokeDex/Poke';
 
 const App = () => {
     return (
-      <div><Poke /></div>
+      <div><Poke id="25" /></div>
     )
 }
 

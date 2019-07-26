@@ -3,10 +3,10 @@ import axios from 'axios';
 
 import './Poke.scss';
 
-const Poke = () => {
+const Poke = (props) => {
 
   const initialPokeState = {
-    pokeId: 25,
+    pokeId: props.id,
     pokeName: '',
     pokeheight: '',
     pokeweight: '',
