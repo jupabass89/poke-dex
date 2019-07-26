@@ -8,8 +8,8 @@ const Poke = (props) => {
   const initialPokeState = {
     pokeId: props.id,
     pokeName: '',
-    pokeheight: '',
-    pokeweight: '',
+    pokeHeight: '',
+    pokeWeight: '',
     pokeImg: '',
     pokeType: '',
   }
@@ -25,8 +25,8 @@ const Poke = (props) => {
       const fetchedState = {
         pokeId: res.data.id,
         pokeName: res.data.name.charAt(0).toUpperCase() + res.data.name.slice(1),
-        pokeheight: res.data.height/10,
-        pokeweight: res.data.weight/10,
+        pokeHeight: res.data.height/10,
+        pokeWeight: res.data.weight/10,
         pokeImg: res.data.sprites.front_default,
         pokeType: res.data.types[0].type.name.charAt(0).toUpperCase() + res.data.types[0].type.name.slice(1)
       }
@@ -68,8 +68,8 @@ const Poke = (props) => {
           <input type="text" value={poke.pokeId} onChange={handleEdit} className="id" />
           <div className="info">
             <h1 className="name">{poke.pokeName}</h1>
-            <h3 className="text">Peso: {poke.pokeweight} Kg </h3>
-            <h3 className="text">Altura: {poke.pokeheight} m</h3>
+            <h3 className="text">Peso: {poke.pokeWeight} kg </h3>
+            <h3 className="text">Altura: {poke.pokeHeight} m</h3>
             <h3 className="text">Tipo: {poke.pokeType}</h3>
           </div>
           <div className="buttons">
