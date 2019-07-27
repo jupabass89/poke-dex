@@ -1,84 +1,84 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect }from 'react'
+import axios from 'axios';
 
 import './Poke.scss';
 
-export default class Poke extends Component {
+const Poke = (props) => {
 
-  state = {
-    urlApi: 'https://pokeapi.co/api/v2/pokemon/',
-    pokeLogo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1280px-International_Pok%C3%A9mon_logo.svg.png',
-    pokeId: 25,
+  const initialPokeState = {
+    pokeId: props.id,
     pokeName: '',
-    pokeheight: '',
-    pokeweight: '',
+    pokeHeight: '',
+    pokeWeight: '',
     pokeImg: '',
-    pokeType: ''
+    pokeType: '',
+  }
+  
+  const [poke, setPoke] = useState(initialPokeState);
+  
+  useEffect(() => {
+
+      axios.get(`https://pokeapi.co/api/v2/pokemon/${poke.pokeId}`).then(res => {
+      
+      console.log(res.data.id)
+
+      const fetchedState = {
+        pokeId: res.data.id,
+        pokeName: res.data.name.charAt(0).toUpperCase() + res.data.name.slice(1),
+        pokeHeight: res.data.height/10,
+        pokeWeight: res.data.weight/10,
+        pokeImg: res.data.sprites.front_default,
+        pokeType: res.data.types[0].type.name.charAt(0).toUpperCase() + res.data.types[0].type.name.slice(1)
+      }
+
+      setPoke(fetchedState)
+    }) 
+    
+    
+    }, [poke.pokeId]);
+  
+
+  const nextPoke = () => {
+    if (poke.pokeId < 802){
+      setPoke({ pokeId: poke.pokeId + 1});
+    }
   }
 
-  componentDidMount() {
-    this.getPoke();
+  const lastPoke = () => {
+    if (poke.pokeId > 1)
+      setPoke({ pokeId: poke.pokeId - 1 });
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    const { pokeId: prevPokeId } = prevState;
-    const { pokeId } = this.state;
-    if (prevPokeId !== pokeId) this.getPoke();
+  const resetPoke = () => {
+    setPoke({ pokeId: 1 });
   }
 
-  getPoke = async () => {
-    const { urlApi, pokeId } = this.state;
-    const resp = await fetch(urlApi + pokeId);
-    const data = await resp.json();
-    this.setState({
-      pokeId: data.id,
-      pokeName: data.name,
-      pokeheight: data.height,
-      pokeweight: data.weight,
-      pokeImg: data.sprites.front_default,
-      pokeType: data.types[0].type.name
-    });
-  }
-
-  nextPoke = () => {
-    if (this.state.pokeId < 802)
-      this.setState({ pokeId: this.state.pokeId + 1 });
-  }
-
-  lastPoke = () => {
-    if (this.state.pokeId > 1)
-      this.setState(({ pokeId }) => ({ pokeId: pokeId - 1 }));
-  }
-
-  resetPoke = () => {
-    this.setState({ pokeId: 1 });
-  }
-
-  handleEdit = (event) => {
+  const handleEdit = (event) => {
     const eventValue = event.target.value;
     if (eventValue > 0 && eventValue < 803 && eventValue !== null)
-      this.setState({ pokeId: event.target.value })
+      setPoke({ pokeId: event.target.value })
   }
 
-  render() {
     return (
       <div className="main">
-        <img className="title" src={this.state.pokeLogo} alt="poke-logo" />
+        <img className="title" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1280px-International_Pok%C3%A9mon_logo.svg.png" alt="poke-logo" />
         <div className="poke-dex">
-          <img className="img" src={this.state.pokeImg} alt="poke-img" />
-          <div onClick={this.resetPoke} className="reset"></div>
-          <input type="text" value={this.state.pokeId} onChange={this.handleEdit} className="id" />
+          <img className="img" src={poke.pokeImg} alt="" />
+          <div onClick={resetPoke} className="reset"></div>
+          <input type="text" value={poke.pokeId} onChange={handleEdit} className="id" />
           <div className="info">
-            <h1 className="name">{this.state.pokeName}</h1>
-            <h3 className="text">Peso: {this.state.pokeweight} Kg </h3>
-            <h3 className="text">Altura: {this.state.pokeheight} Fts</h3>
-            <h3 className="text">Tipo: {this.state.pokeType}</h3>
+            <h1 className="name">{poke.pokeName}</h1>
+            <h3 className="text">Peso: {poke.pokeWeight} kg </h3>
+            <h3 className="text">Altura: {poke.pokeHeight} m</h3>
+            <h3 className="text">Tipo: {poke.pokeType}</h3>
           </div>
           <div className="buttons">
-            <div onClick={this.lastPoke} className="button"></div>
-            <div onClick={this.nextPoke} className="button"></div>
+            <div onClick={lastPoke} className="button"></div>
+            <div onClick={nextPoke} className="button"></div>            
           </div>
         </div>
       </div>
     )
-  }
 }
+
+export default Poke;

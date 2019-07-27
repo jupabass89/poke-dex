@@ -1,11 +1,10 @@
-import React, { Component } from 'react'
-import './App.css';
+import React from 'react'
 import Poke from './PokeDex/Poke';
 
-export default class App extends Component {
-  render() {
+const App = () => {
     return (
-      <div><Poke /></div>
+      <div><Poke id="25" /></div>
     )
-  }
 }
+
+export default App;
